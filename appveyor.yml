@@ -3,7 +3,6 @@ environment:
   MINGW_URL: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.9.2/threads-win32/seh/x86_64-4.9.2-release-win32-seh-rt_v4-rev4.7z/download
   MINGW_ARCHIVE: x86_64-6.3.0-posix-seh-rt_v5-rev1.7z
 
-
 clone_depth: 3
 
 install:
@@ -12,25 +11,23 @@ install:
 
 before_build:
 - set Path=%CD%\%MINGW_DIR%\bin;%Path%
-- gcc --version
-- echo %CC%
-- g++ --version
-- echo %CXX%
-- gfortran --version
-- echo %FC%
+- gcc -dumpversion
+- g++ -dumpversion
+- gfortran -dumpversion
 - mingw32-make --version
 - cmake --version
 - set ORIGPATH=%PATH%
 - set FC=%CD%\%MINGW_DIR%\bin\gfortran.exe
 
 
-
-
 build_script:
-  - cd bin
+- cd bin
+
+- set PATH=C:\Program Files (x86)\CMake\bin
+- cmake .. -G "MinGW Makefiles" 
+
+- set PATH=%OLDPATH%
+- mingw32-make
   
-  - set PATH=C:\Program Files (x86)\CMake\bin
-  - cmake .. -G "MinGW Makefiles" 
-  
-  - set PATH=%OLDPATH%
-  - make
+after_build:
+- ./hello
