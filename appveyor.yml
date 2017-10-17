@@ -17,12 +17,15 @@ before_build:
 - mingw32-make --version
 - cmake --version
 
+- set ORIGPATH=%PATH%
 - set FC=%CD%\%MINGW_DIR%\bin\gfortran.exe
 
 
 build_script:
 - cd bin
-- cmake .. -G "MinGW Makefiles" 
+- set PATH=C:\Program Files (x86)\CMake\bin
+- cmake .. -G "MinGW Makefiles"
+- set PATH=%OLDPATH% 
 - mingw32-make
   
 after_build:
