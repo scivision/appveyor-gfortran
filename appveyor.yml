@@ -25,4 +25,8 @@ build_script:
 - ..\%MINGW_DIR%\bin\mingw32-make
   
 after_build:
-- hello.exe
+- hellocpp.exe
+- hellof.exe
+
+on_failure:
+- type C:/projects/appveyor-gfortran/bin/CMakeFiles/CMakeError.log
