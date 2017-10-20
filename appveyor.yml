@@ -1,8 +1,9 @@
 environment:
-  PROFILE: MINGWx64
-  PLATFORM: x64
-  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64
+#  PROFILE: MINGWx64
+#  PLATFORM: x64
+#  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64
 #   MINGW_DIR: C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32
+  MINGW_DIR: c:\MinGW
 
 clone_depth: 3
 
