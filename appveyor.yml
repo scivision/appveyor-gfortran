@@ -1,9 +1,9 @@
 environment:
 #  PROFILE: MINGWx64
 #  PLATFORM: x64
-#  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64
+  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64
 #   MINGW_DIR: C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32
-  MINGW_DIR: c:\MinGW
+#  MINGW_DIR: c:\MinGW  # No gfortran this dir
 
 clone_depth: 3
 
@@ -16,7 +16,7 @@ before_build:
 - mingw32-make --version
 - cmake --version
 
-- set ORIGPATH=%PATH%
+- set OrigPath=%PATH%
 - set CXX=%MINGW_DIR%\bin\g++.exe
 - set FC=%MINGW_DIR%\bin\gfortran.exe
 
@@ -25,7 +25,7 @@ build_script:
 - cd bin
 - set Path=C:\Program Files (x86)\CMake\bin
 - cmake .. -G "MinGW Makefiles"
-- set Path=%OLDPATH% 
+- set Path=%OrigPath% 
 - ..\%MINGW_DIR%\bin\mingw32-make
   
 after_build:
