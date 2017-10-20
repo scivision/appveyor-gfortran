@@ -1,7 +1,7 @@
 environment:
   MINGW_DIR: mingw64
-  MINGW_URL: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.1.0/threads-posix/seh/x86_64-7.1.0-release-posix-seh-rt_v5-rev2.7z/download
-  MINGW_ARCHIVE: x86_64-7.1.0-release-posix-seh-rt_v5-rev2.7z
+  MINGW_URL: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/6.3.0/threads-posix/seh/x86_64-6.3.0-release-posix-seh-rt_v5-rev1.7z/download
+  MINGW_ARCHIVE: x86_64-6.3.0-release-posix-seh-rt_v5-rev1.7z
 
 clone_depth: 3
 
