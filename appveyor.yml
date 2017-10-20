@@ -1,3 +1,6 @@
+cache:
+- C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0
+
 environment:
   MINGW_DIR: mingw64
   MINGW_URL: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/6.3.0/threads-posix/seh/x86_64-6.3.0-release-posix-seh-rt_v5-rev1.7z/download
@@ -5,9 +8,7 @@ environment:
 
 clone_depth: 3
 
-install:
-- if not exist "%MINGW_ARCHIVE%" appveyor DownloadFile "%MINGW_URL%" -FileName "%MINGW_ARCHIVE%"
-- 7z x -y "%MINGW_ARCHIVE%" > nul
+
 
 before_build:
 - set Path=%CD%\%MINGW_DIR%\bin;%Path%
