@@ -12,7 +12,7 @@ before_build:
 - set Path=%MINGW_DIR%\bin;%Path%
 - gcc -dumpversion
 - g++ -dumpversion
-- gfortran -dumpversion
+#- gfortran -dumpversion
 - mingw32-make --version
 - cmake --version
 
