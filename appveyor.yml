@@ -1,17 +1,11 @@
-cache:
-- C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0
-
 environment:
-  MINGW_DIR: mingw64
-  MINGW_URL: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/6.3.0/threads-posix/seh/x86_64-6.3.0-release-posix-seh-rt_v5-rev1.7z/download
-  MINGW_ARCHIVE: x86_64-6.3.0-release-posix-seh-rt_v5-rev1.7z
+  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
 
 clone_depth: 3
 
 
-
 before_build:
-- set Path=%CD%\%MINGW_DIR%\bin;%Path%
+- set Path=%MINGW_DIR%\bin;%Path%
 - gcc -dumpversion
 - g++ -dumpversion
 - gfortran -dumpversion
@@ -19,14 +13,14 @@ before_build:
 - cmake --version
 
 - set ORIGPATH=%PATH%
-- set FC=%CD%\%MINGW_DIR%\bin\gfortran.exe
+- set FC=%MINGW_DIR%\bin\gfortran.exe
 
 
 build_script:
 - cd bin
-- set PATH=C:\Program Files (x86)\CMake\bin
+- set Path=C:\Program Files (x86)\CMake\bin
 - cmake .. -G "MinGW Makefiles"
-- set PATH=%OLDPATH% 
+- set Path=%OLDPATH% 
 - ..\%MINGW_DIR%\bin\mingw32-make
   
 after_build:
