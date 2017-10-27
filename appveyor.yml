@@ -1,7 +1,7 @@
 environment:
 #  PROFILE: MINGWx64
 #  PLATFORM: x64
-  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64
+  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 #   MINGW_DIR: C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32
 #  MINGW_DIR: c:\MinGW  # No gfortran this dir
 
@@ -9,16 +9,17 @@ clone_depth: 3
 
 
 before_build:
-- set Path=%MINGW_DIR%\bin;%Path%
+- set Path=%MINGW_DIR%;%Path%
 - gcc -dumpversion
 - g++ -dumpversion
-#- gfortran -dumpversion
+- gfortran -dumpversion
 - mingw32-make --version
 - cmake --version
 
 - set OrigPath=%PATH%
-- set CXX=%MINGW_DIR%\bin\g++.exe
-- set FC=%MINGW_DIR%\bin\gfortran.exe
+- set CC=%MINGW_DIR%\gcc.exe
+- set CXX=%MINGW_DIR%\g++.exe
+- set FC=%MINGW_DIR%\gfortran.exe
 
 
 build_script:
@@ -26,11 +27,11 @@ build_script:
 - set Path=C:\Program Files (x86)\CMake\bin
 - cmake .. -G "MinGW Makefiles"
 - set Path=%OrigPath% 
-- ..\%MINGW_DIR%\bin\mingw32-make
+- %MINGW_DIR%\mingw32-make
   
 after_build:
 - hellocpp.exe
 - hellof.exe
 
 on_failure:
-- type C:/projects/appveyor-gfortran/bin/CMakeFiles/CMakeError.log
+- type C:\projects\appveyor-gfortran\bin\CMakeFiles\CMakeError.log
