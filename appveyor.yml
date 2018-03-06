@@ -1,22 +1,10 @@
 environment:
-#  PROFILE: MINGWx64
-#  PLATFORM: x64
-
   MINGW_DIR: C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
-#  MINGW_DIR: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
-#  MINGW_DIR: C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32
-#  MINGW_DIR: c:\MinGW  # No gfortran this dir
 
 clone_depth: 3
 
-
 before_build:
 - set PATH=%MINGW_DIR%;%PATH%
-- gcc -dumpversion
-- g++ -dumpversion
-- gfortran -dumpversion
-- mingw32-make --version
-- cmake --version
 
 # fix CMake sh.exe issue,  https://github.com/jibsen/brieflz/blob/0c6fb73984f11e697dfaade5cdc5e291c1655c67/appveyor.yml
 - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
@@ -26,9 +14,9 @@ before_build:
 - set CXX=%MINGW_DIR%\g++.exe
 - set FC=%MINGW_DIR%\gfortran.exe
 
+- cd bin
 
 build_script:
-- cd bin
 - cmake -G "MinGW Makefiles" ..
 - mingw32-make
   
@@ -37,4 +25,4 @@ after_build:
 - hellof.exe
 
 on_failure:
-- type C:\projects\appveyor-gfortran\bin\CMakeFiles\CMakeError.log
+- type CMakeFiles\CMakeError.log
