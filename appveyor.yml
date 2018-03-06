@@ -27,4 +27,4 @@ after_build:
 - python hello.py
 
 on_failure:
-- type CMakeFiles\CMakeError.log
+- type bin\CMakeFiles\CMakeError.log
