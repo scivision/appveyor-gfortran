@@ -19,7 +19,7 @@ before_build:
 - cmake --version
 
 # fix CMake sh.exe issue,  https://github.com/jibsen/brieflz/blob/0c6fb73984f11e697dfaade5cdc5e291c1655c67/appveyor.yml
-- set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
+- set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
 - set PATH=C:\MinGW\bin;%PATH%
 
 - set CC=%MINGW_DIR%\gcc.exe
