@@ -18,8 +18,10 @@ before_build:
 - mingw32-make --version
 - cmake --version
 
-#- set OrigPath=%PATH%
-- set MAKEFLAGS=SHELL=cmd
+# fix CMake sh.exe issue,  https://github.com/jibsen/brieflz/blob/0c6fb73984f11e697dfaade5cdc5e291c1655c67/appveyor.yml
+- set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
+- set PATH=C:\MinGW\bin;%PATH%
+
 - set CC=%MINGW_DIR%\gcc.exe
 - set CXX=%MINGW_DIR%\g++.exe
 - set FC=%MINGW_DIR%\gfortran.exe
@@ -27,9 +29,7 @@ before_build:
 
 build_script:
 - cd bin
-#- set PATH=C:\Program Files (x86)\CMake\bin
 - cmake -G "MinGW Makefiles" ..
-#- set PATH=%OrigPath% 
 - mingw32-make
   
 after_build:
