@@ -5,10 +5,8 @@ clone_depth: 3
 
 before_build:
 - set PATH=%MINGW_DIR%;%PATH%
-
-# fix CMake sh.exe issue,  https://github.com/jibsen/brieflz/blob/0c6fb73984f11e697dfaade5cdc5e291c1655c67/appveyor.yml
+# fix CMake sh.exe issue, by removing Git path.
 - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
-- set PATH=C:\MinGW\bin;%PATH%
 
 - set CC=%MINGW_DIR%\gcc.exe
 - set CXX=%MINGW_DIR%\g++.exe
