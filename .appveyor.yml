@@ -17,7 +17,7 @@ before_build:
 - cd bin
 
 build_script:
-- cmd: cmake -G "MinGW Makefiles" -DCMAKE_Fortran_COMPILER=%MINGW_DIR%\gfortran.exe ..
+- cmd: cmake -G "MinGW Makefiles" -DCMAKE_Fortran_COMPILER="%MINGW_DIR%\gfortran.exe" ..
 - cmd: mingw32-make
 
 - sh: cmake ..
