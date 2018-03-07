@@ -13,11 +13,16 @@ before_build:
 - cmd: set PATH=%MINGW_DIR%;%PY_DIR%;%PATH%
 # fix CMake sh.exe issue, by removing Git path.
 - cmd: set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
+- cmd: set FC=%MINGW_DIR\gfortran
+- cmd: set CXX=%MINGW_DIR\g++
+- cmd: set CC=%MINGW_DIR\gcc
+
+- sh: sudo apt install g++ gfortran cmake make
 
 - cd bin
 
 build_script:
-- cmd: cmake -G "MinGW Makefiles" -DCMAKE_Fortran_COMPILER="%MINGW_DIR%\gfortran.exe" ..
+- cmd: cmake -G "MinGW Makefiles" ..
 - cmd: mingw32-make
 
 - sh: cmake ..
