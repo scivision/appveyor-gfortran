@@ -1,5 +1,5 @@
 image:
-- Visual Studio 2015
+- Visual Studio 2017
 - Ubuntu
 
 stack: python 3
@@ -18,8 +18,8 @@ before_build:
 - cmd: set CXX=%MINGW_DIR%\g++
 - cmd: set CC=%MINGW_DIR%\gcc
 
-- sh: sudo apt -yq update
-- sh: sudo apt install -yq --no-install-suggests --no-install-recommends --force-yes gfortran cmake make
+- sh: sudo apt -yq update > /dev/null
+- sh: sudo apt install -yq --no-install-suggests --no-install-recommends --force-yes gfortran cmake make > /dev/null
 
 - cd bin
 
@@ -31,11 +31,9 @@ build_script:
 - sh: make
   
 after_build:
-- ./hellocpp
-- ./hellof
+- cmd: hellocpp; hellof
+- sh: ./hellocpp; ./hellof
 
 - cd ..
 - python hello.py
 
-on_failure:
-- cmd: type bin\CMakeFiles\CMakeError.log
