@@ -5,5 +5,13 @@
 Quick examples of Appveyor building with `gfortran` and other common tasks, roughly equivalent to what one would do with 
 [Travis-CI](https://www.scivision.co/travis-ci-examples/).
 
-Just like Travis-CI, I don't configure any of the per-repo dashboard configuration, I do everything through [appveyor.yml](appveyor.yml).
+Just like Travis-CI, I don't configure any of the per-repo dashboard configuration, I do everything through [.appveyor.yml](.appveyor.yml).
 
+
+## Usage
+```sh
+cd bin
+cmake ..
+make
+make test
+```
