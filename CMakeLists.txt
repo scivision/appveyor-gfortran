@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 3.7)
 project(hello CXX Fortran)
 
+set(CTEST_OUTPUT_ON_FAILURE ON)
+
 add_compile_options(-Wall -Wextra -Wpedantic)# -g -Wa,-alh)
 
 add_executable(hellocpp hello.cpp)
