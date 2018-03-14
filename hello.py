@@ -1,4 +1,5 @@
+#!/usr/bin/env python
 import sys
 
-print('Hello world!')
+print('Hello World!  (from Python)')
 print(sys.version)

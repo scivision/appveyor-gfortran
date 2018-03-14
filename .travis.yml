@@ -33,5 +33,4 @@ install:
   - make
     
 script:
-  - ./hellocpp
-  - ./hellof
+  - make test

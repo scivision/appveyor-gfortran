@@ -17,23 +17,19 @@ before_build:
 - cmd: set FC=%MINGW_DIR%\gfortran 
 - cmd: set CXX=%MINGW_DIR%\g++ 
 - cmd: set CC=%MINGW_DIR%\gcc
+- cmd: mklink make.exe %MINGW_DIR%\mingw32-make.exe
 
-- sh: sudo apt -yq update > /dev/null
-- sh: sudo apt install -yq --no-install-suggests --no-install-recommends gfortran cmake make > /dev/null
+- sh: sudo apt-get -yq update > /dev/null
+- sh: sudo apt-get install -yq --no-install-suggests --no-install-recommends gfortran cmake make > /dev/null
 
 - cd bin
 
 build_script:
 - cmd: cmake -G "MinGW Makefiles" ..
-- cmd: mingw32-make
-
 - sh: cmake ..
-- sh: make
+- make
   
 after_build:
-- cmd: hellocpp & hellof
-- sh: ./hellocpp; ./hellof
+- make test
 
-- cd ..
-- python hello.py
 
