@@ -7,6 +7,13 @@ Quick examples of Appveyor building with `gfortran` and other common tasks, roug
 
 Just like Travis-CI, I don't configure any of the per-repo dashboard configuration, I do everything through [.appveyor.yml](.appveyor.yml).
 
+## Prereqs
+
+To run these on your local computer, you would need:
+
+* Mac: `brew install gcc cmake`
+* Linux: `apt install g++ gfortran cmake`
+* [Windows](https://www.scivision.co/brew-install-scoop-for-windows/): `scoop install gcc cmake`
 
 ## Usage
 ```sh
