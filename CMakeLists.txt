@@ -16,7 +16,7 @@ set_tests_properties(C++ Fortran PROPERTIES
 
 find_package(PythonInterp)
 if(PYTHONINTERP_FOUND)
-  add_test(NAME Python COMMAND hello.py
+  add_test(NAME Python COMMAND python hello.py
          WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
   set_tests_properties(Python PROPERTIES
                     PASS_REGULAR_EXPRESSION "Hello World")
