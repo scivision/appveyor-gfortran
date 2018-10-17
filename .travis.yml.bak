@@ -1,0 +1,35 @@
+# waiting for Travis-CI cmake >= 3.12
+language: cpp
+group: travis_latest
+
+git:
+  depth: 3
+  quiet: true
+
+os:
+- linux
+- osx
+  
+env: FC=gfortran
+
+
+addons:
+  apt:
+    packages:
+    - g++
+    - gfortran
+
+before_install:
+- if [[ $TRAVIS_OS_NAME == osx ]]; then
+  brew update > /dev/null;
+  brew install gcc || brew link --overwrite gcc;
+  export FC=gfortran;
+  fi
+
+install: 
+- cd bin
+- cmake ..
+- cmake --build .
+    
+script:
+- ctest -V
