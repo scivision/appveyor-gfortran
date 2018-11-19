@@ -15,9 +15,9 @@ add_test(NAME Fortran COMMAND hellof)
 set_tests_properties(C++ Fortran PROPERTIES
                     PASS_REGULAR_EXPRESSION "Hello World")
 
-find_package(Python)
-if(PYTHON_VERSION_STRING STRGREATER_EQUAL 3.6)
-  add_test(NAME Python COMMAND python hello.py
+find_package(Python3 COMPONENTS Interpreter)
+if(Python3_Interpreter_FOUND)
+  add_test(NAME Python COMMAND ${Python3_EXECUTABLE} hello.py
          WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
   set_tests_properties(Python PROPERTIES
                     PASS_REGULAR_EXPRESSION "Hello World")
